@@ -115,8 +115,11 @@ class NTUSkeletonDataset(Dataset):
                     joints = []
                     for _ in range(n_joints):
                         parts = lines[line_idx].strip().split(); line_idx += 1
-                        x, y, z = float(parts[0]), float(parts[1]), float(parts[2])
-                        joints.append([x, y, z])
+                        try:
+                            x, y, z = float(parts[0]), float(parts[1]), float(parts[2])
+                            joints.append([x, y, z])
+                        except (ValueError, IndexError):
+                            joints.append([0.0, 0.0, 0.0])
                     frame_joints = joints
                 else:
                     line_idx += n_joints  # skip extra bodies
