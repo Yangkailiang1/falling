@@ -1,0 +1,27 @@
+# Large files / datasets
+Le2i/
+checkpoints/
+spwm/model_weights/
+logs/
+outputs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+
+# System
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+.claude/
+._*
+*.DS_Store

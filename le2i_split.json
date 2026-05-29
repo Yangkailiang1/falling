@@ -1,0 +1,1633 @@
+{
+  "metadata": {
+    "created": "2026-05-25",
+    "seed": 42,
+    "num_context_frames": 16,
+    "num_future_frames": 8,
+    "n_videos_total": 190,
+    "n_fall_train": 75,
+    "n_fall_test": 21,
+    "n_nonfall_train": 74,
+    "n_nonfall_test": 20
+  },
+  "videos": {
+    "Home_01_Home_01_Videos_video (16)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 264,
+      "ctx_start": 177,
+      "fall_start": 186,
+      "fall_end": 199,
+      "leak": 7
+    },
+    "Office_Office_video (9)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 206,
+      "ctx_start": 12
+    },
+    "Lecture_room_Lecture room_video (19)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 818,
+      "ctx_start": 395
+    },
+    "Lecture_room_Lecture room_video (9)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 935,
+      "ctx_start": 110
+    },
+    "Office_Office_video (31)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 203,
+      "ctx_start": 167
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (59)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 251,
+      "ctx_start": 121,
+      "fall_start": 134,
+      "fall_end": 157,
+      "leak": 3
+    },
+    "Lecture_room_Lecture room_video (1)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 285,
+      "ctx_start": 132
+    },
+    "Office_Office_video (8)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 419,
+      "ctx_start": 310
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (64)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 212,
+      "ctx_start": 125,
+      "fall_start": 137,
+      "fall_end": 162,
+      "leak": 4
+    },
+    "Lecture_room_Lecture room_video (24)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 1442,
+      "ctx_start": 29
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (61)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Coffee_room_02",
+      "n_frames": 1314,
+      "ctx_start": 1262
+    },
+    "Home_02_Home_02_Videos_video (48)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 240,
+      "ctx_start": 71
+    },
+    "Lecture_room_Lecture room_video (10)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 493,
+      "ctx_start": 182
+    },
+    "Home_02_Home_02_Videos_video (34)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_02",
+      "n_frames": 240,
+      "ctx_start": 151,
+      "fall_start": 157,
+      "fall_end": 170,
+      "leak": 10
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (60)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 275,
+      "ctx_start": 116,
+      "fall_start": 129,
+      "fall_end": 157,
+      "leak": 3
+    },
+    "Home_02_Home_02_Videos_video (35)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_02",
+      "n_frames": 216,
+      "ctx_start": 133,
+      "fall_start": 136,
+      "fall_end": 149,
+      "leak": 13
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (36)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 1203,
+      "ctx_start": 1074,
+      "fall_start": 1088,
+      "fall_end": 1116,
+      "leak": 2
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (38)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 352,
+      "ctx_start": 235,
+      "fall_start": 237,
+      "fall_end": 260,
+      "leak": 14
+    },
+    "Office_Office_video (18)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 766,
+      "ctx_start": 700
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (18)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 269,
+      "ctx_start": 142,
+      "fall_start": 154,
+      "fall_end": 184,
+      "leak": 4
+    },
+    "Home_02_Home_02_Videos_video (50)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 312,
+      "ctx_start": 80
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (52)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Coffee_room_02",
+      "n_frames": 215,
+      "ctx_start": 188
+    },
+    "Lecture_room_Lecture room_video (6)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 285,
+      "ctx_start": 261
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (50)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Coffee_room_02",
+      "n_frames": 1954,
+      "ctx_start": 361
+    },
+    "Lecture_room_Lecture room_video (21)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 1130,
+      "ctx_start": 576
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (55)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 323,
+      "ctx_start": 210,
+      "fall_start": 217,
+      "fall_end": 244,
+      "leak": 9
+    },
+    "Home_01_Home_01_Videos_video (3)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 240,
+      "ctx_start": 111,
+      "fall_start": 122,
+      "fall_end": 137,
+      "leak": 5
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (20)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 444,
+      "ctx_start": 320,
+      "fall_start": 330,
+      "fall_end": 375,
+      "leak": 6
+    },
+    "Office_Office_video (11)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 193,
+      "ctx_start": 15
+    },
+    "Office_Office_video (6)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 415,
+      "ctx_start": 77
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (66)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Coffee_room_02",
+      "n_frames": 298,
+      "ctx_start": 59
+    },
+    "Lecture_room_Lecture room_video (12)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 675,
+      "ctx_start": 35
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (51)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 203,
+      "ctx_start": 64,
+      "fall_start": 76,
+      "fall_end": 117,
+      "leak": 4
+    },
+    "Home_01_Home_01_Videos_video (7)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 216,
+      "ctx_start": 135,
+      "fall_start": 139,
+      "fall_end": 154,
+      "leak": 12
+    },
+    "Home_02_Home_02_Videos_video (52)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 216,
+      "ctx_start": 11
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (10)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 362,
+      "ctx_start": 211,
+      "fall_start": 211,
+      "fall_end": 238,
+      "leak": 16
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (34)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 415,
+      "ctx_start": 325,
+      "fall_start": 331,
+      "fall_end": 357,
+      "leak": 10
+    },
+    "Home_01_Home_01_Videos_video (30)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 192,
+      "ctx_start": 116,
+      "fall_start": 123,
+      "fall_end": 138,
+      "leak": 9
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (12)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 182,
+      "ctx_start": 38,
+      "fall_start": 53,
+      "fall_end": 75,
+      "leak": 1
+    },
+    "Home_02_Home_02_Videos_video (55)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 216,
+      "ctx_start": 91
+    },
+    "Lecture_room_Lecture room_video (20)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 298,
+      "ctx_start": 101
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (49)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 492,
+      "ctx_start": 415,
+      "fall_start": 427,
+      "fall_end": 454,
+      "leak": 4
+    },
+    "Office_Office_video (26)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 499,
+      "ctx_start": 232
+    },
+    "Home_02_Home_02_Videos_video (60)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 312,
+      "ctx_start": 263
+    },
+    "Office_Office_video (33)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 639,
+      "ctx_start": 115
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (31)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 265,
+      "ctx_start": 151,
+      "fall_start": 158,
+      "fall_end": 176,
+      "leak": 9
+    },
+    "Lecture_room_Lecture room_video (14)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 428,
+      "ctx_start": 138
+    },
+    "Office_Office_video (20)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 532,
+      "ctx_start": 508
+    },
+    "Office_Office_video (21)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 428,
+      "ctx_start": 184
+    },
+    "Office_Office_video (3)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 467,
+      "ctx_start": 322
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (53)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 383,
+      "ctx_start": 247,
+      "fall_start": 261,
+      "fall_end": 289,
+      "leak": 2
+    },
+    "Lecture_room_Lecture room_video (15)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 593,
+      "ctx_start": 414
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (26)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Coffee_room_01",
+      "n_frames": 278,
+      "ctx_start": 104
+    },
+    "Office_Office_video (22)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 221,
+      "ctx_start": 59
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (9)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 206,
+      "ctx_start": 92,
+      "fall_start": 93,
+      "fall_end": 125,
+      "leak": 15
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (7)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 174,
+      "ctx_start": 82,
+      "fall_start": 96,
+      "fall_end": 126,
+      "leak": 2
+    },
+    "Home_01_Home_01_Videos_video (15)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 238,
+      "ctx_start": 161,
+      "fall_start": 170,
+      "fall_end": 184,
+      "leak": 7
+    },
+    "Office_Office_video (25)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 988,
+      "ctx_start": 813
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (11)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 483,
+      "ctx_start": 364,
+      "fall_start": 375,
+      "fall_end": 404,
+      "leak": 5
+    },
+    "Home_02_Home_02_Videos_video (59)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 216,
+      "ctx_start": 2
+    },
+    "Office_Office_video (17)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 217,
+      "ctx_start": 11
+    },
+    "Home_02_Home_02_Videos_video (37)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Home_02",
+      "n_frames": 240,
+      "ctx_start": 126,
+      "fall_start": 129,
+      "fall_end": 144,
+      "leak": 13
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (65)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Coffee_room_02",
+      "n_frames": 711,
+      "ctx_start": 230
+    },
+    "Lecture_room_Lecture room_video (25)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 376,
+      "ctx_start": 97
+    },
+    "Office_Office_video (1)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 415,
+      "ctx_start": 233
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (43)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 718,
+      "ctx_start": 622,
+      "fall_start": 632,
+      "fall_end": 662,
+      "leak": 6
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (35)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 231,
+      "ctx_start": 61,
+      "fall_start": 74,
+      "fall_end": 106,
+      "leak": 3
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (70)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Coffee_room_02",
+      "n_frames": 839,
+      "ctx_start": 230
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (54)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 251,
+      "ctx_start": 157,
+      "fall_start": 157,
+      "fall_end": 179,
+      "leak": 16
+    },
+    "Home_01_Home_01_Videos_video (13)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 240,
+      "ctx_start": 156,
+      "fall_start": 156,
+      "fall_end": 167,
+      "leak": 16
+    },
+    "Home_01_Home_01_Videos_video (26)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 216,
+      "ctx_start": 114,
+      "fall_start": 130,
+      "fall_end": 141,
+      "leak": 0
+    },
+    "Home_02_Home_02_Videos_video (31)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_02",
+      "n_frames": 312,
+      "ctx_start": 190,
+      "fall_start": 200,
+      "fall_end": 216,
+      "leak": 6
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (3)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 304,
+      "ctx_start": 216,
+      "fall_start": 223,
+      "fall_end": 261,
+      "leak": 9
+    },
+    "Home_01_Home_01_Videos_video (1)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 264,
+      "ctx_start": 128,
+      "fall_start": 144,
+      "fall_end": 164,
+      "leak": 0
+    },
+    "Home_01_Home_01_Videos_video (18)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 216,
+      "ctx_start": 127,
+      "fall_start": 135,
+      "fall_end": 149,
+      "leak": 8
+    },
+    "Home_02_Home_02_Videos_video (47)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 288,
+      "ctx_start": 144
+    },
+    "Home_01_Home_01_Videos_video (19)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 192,
+      "ctx_start": 126,
+      "fall_start": 129,
+      "fall_end": 139,
+      "leak": 13
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (63)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Coffee_room_02",
+      "n_frames": 596,
+      "ctx_start": 296
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (17)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 158,
+      "ctx_start": 5,
+      "fall_start": 20,
+      "fall_end": 57,
+      "leak": 1
+    },
+    "Home_02_Home_02_Videos_video (51)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 264,
+      "ctx_start": 215
+    },
+    "Home_01_Home_01_Videos_video (5)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 192,
+      "ctx_start": 105,
+      "fall_start": 109,
+      "fall_end": 125,
+      "leak": 12
+    },
+    "Office_Office_video (19)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 329,
+      "ctx_start": 126
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (25)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 262,
+      "ctx_start": 128,
+      "fall_start": 137,
+      "fall_end": 179,
+      "leak": 7
+    },
+    "Office_Office_video (10)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 269,
+      "ctx_start": 94
+    },
+    "Lecture_room_Lecture room_video (23)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 675,
+      "ctx_start": 133
+    },
+    "Home_02_Home_02_Videos_video (42)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 168,
+      "ctx_start": 18
+    },
+    "Office_Office_video (30)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 1247,
+      "ctx_start": 1208
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (15)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 140,
+      "ctx_start": 45,
+      "fall_start": 48,
+      "fall_end": 73,
+      "leak": 13
+    },
+    "Lecture_room_Lecture room_video (7)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 337,
+      "ctx_start": 81
+    },
+    "Office_Office_video (32)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 544,
+      "ctx_start": 446
+    },
+    "Home_02_Home_02_Videos_video (54)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 216,
+      "ctx_start": 29
+    },
+    "Lecture_room_Lecture room_video (4)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 402,
+      "ctx_start": 316
+    },
+    "Office_Office_video (14)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 173,
+      "ctx_start": 138
+    },
+    "Lecture_room_Lecture room_video (3)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 623,
+      "ctx_start": 296
+    },
+    "Office_Office_video (5)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 238,
+      "ctx_start": 123
+    },
+    "Home_01_Home_01_Videos_video (25)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 213,
+      "ctx_start": 162,
+      "fall_start": 173,
+      "fall_end": 182,
+      "leak": 5
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (69)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Coffee_room_02",
+      "n_frames": 1283,
+      "ctx_start": 1065
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (6)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 239,
+      "ctx_start": 128,
+      "fall_start": 136,
+      "fall_end": 165,
+      "leak": 8
+    },
+    "Home_02_Home_02_Videos_video (44)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 314,
+      "ctx_start": 207
+    },
+    "Home_02_Home_02_Videos_video (56)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 360,
+      "ctx_start": 166
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (37)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 206,
+      "ctx_start": 42,
+      "fall_start": 57,
+      "fall_end": 82,
+      "leak": 1
+    },
+    "Lecture_room_Lecture room_video (16)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 870,
+      "ctx_start": 352
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (68)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Coffee_room_02",
+      "n_frames": 1607,
+      "ctx_start": 777
+    },
+    "Office_Office_video (24)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 829,
+      "ctx_start": 229
+    },
+    "Home_02_Home_02_Videos_video (38)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 192,
+      "ctx_start": 145
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (5)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 181,
+      "ctx_start": 128,
+      "fall_start": 129,
+      "fall_end": 161,
+      "leak": 15
+    },
+    "Office_Office_video (7)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 217,
+      "ctx_start": 172
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (4)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 207,
+      "ctx_start": 108,
+      "fall_start": 123,
+      "fall_end": 155,
+      "leak": 1
+    },
+    "Office_Office_video (28)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 505,
+      "ctx_start": 415
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (62)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 282,
+      "ctx_start": 161,
+      "fall_start": 175,
+      "fall_end": 194,
+      "leak": 2
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (30)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 145,
+      "ctx_start": 78,
+      "fall_start": 80,
+      "fall_end": 104,
+      "leak": 14
+    },
+    "Home_02_Home_02_Videos_video (45)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 216,
+      "ctx_start": 2
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (58)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 311,
+      "ctx_start": 175,
+      "fall_start": 177,
+      "fall_end": 211,
+      "leak": 14
+    },
+    "Office_Office_video (15)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 318,
+      "ctx_start": 174
+    },
+    "Office_Office_video (4)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 320,
+      "ctx_start": 19
+    },
+    "Lecture_room_Lecture room_video (2)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 506,
+      "ctx_start": 243
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (28)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 175,
+      "ctx_start": 56,
+      "fall_start": 59,
+      "fall_end": 90,
+      "leak": 13
+    },
+    "Home_01_Home_01_Videos_video (6)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 192,
+      "ctx_start": 111,
+      "fall_start": 116,
+      "fall_end": 140,
+      "leak": 11
+    },
+    "Home_02_Home_02_Videos_video (32)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_02",
+      "n_frames": 192,
+      "ctx_start": 77,
+      "fall_start": 87,
+      "fall_end": 99,
+      "leak": 6
+    },
+    "Home_02_Home_02_Videos_video (49)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 312,
+      "ctx_start": 193
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (41)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 382,
+      "ctx_start": 258,
+      "fall_start": 267,
+      "fall_end": 292,
+      "leak": 7
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (45)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 215,
+      "ctx_start": 90,
+      "fall_start": 100,
+      "fall_end": 129,
+      "leak": 6
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (19)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 213,
+      "ctx_start": 84,
+      "fall_start": 89,
+      "fall_end": 129,
+      "leak": 11
+    },
+    "Home_01_Home_01_Videos_video (27)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 240,
+      "ctx_start": 162,
+      "fall_start": 168,
+      "fall_end": 175,
+      "leak": 10
+    },
+    "Home_02_Home_02_Videos_video (40)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 240,
+      "ctx_start": 40
+    },
+    "Office_Office_video (2)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 259,
+      "ctx_start": 177
+    },
+    "Lecture_room_Lecture room_video (5)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 389,
+      "ctx_start": 57
+    },
+    "Home_01_Home_01_Videos_video (21)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 216,
+      "ctx_start": 133,
+      "fall_start": 148,
+      "fall_end": 156,
+      "leak": 1
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (29)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 328,
+      "ctx_start": 281,
+      "fall_start": 297,
+      "fall_end": 328,
+      "leak": 0
+    },
+    "Home_02_Home_02_Videos_video (33)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Home_02",
+      "n_frames": 192,
+      "ctx_start": 111,
+      "fall_start": 127,
+      "fall_end": 140,
+      "leak": 0
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (2)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 306,
+      "ctx_start": 178,
+      "fall_start": 192,
+      "fall_end": 219,
+      "leak": 2
+    },
+    "Home_02_Home_02_Videos_video (39)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 192,
+      "ctx_start": 77
+    },
+    "Lecture_room_Lecture room_video (26)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 1429,
+      "ctx_start": 196
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (16)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 177,
+      "ctx_start": 44,
+      "fall_start": 46,
+      "fall_end": 65,
+      "leak": 14
+    },
+    "Home_01_Home_01_Videos_video (28)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 216,
+      "ctx_start": 160,
+      "fall_start": 169,
+      "fall_end": 180,
+      "leak": 7
+    },
+    "Home_01_Home_01_Videos_video (29)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 271,
+      "ctx_start": 143,
+      "fall_start": 159,
+      "fall_end": 170,
+      "leak": 0
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (48)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 779,
+      "ctx_start": 650,
+      "fall_start": 654,
+      "fall_end": 686,
+      "leak": 12
+    },
+    "Office_Office_video (27)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 811,
+      "ctx_start": 756
+    },
+    "Home_01_Home_01_Videos_video (23)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 240,
+      "ctx_start": 154,
+      "fall_start": 165,
+      "fall_end": 173,
+      "leak": 5
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (21)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 182,
+      "ctx_start": 72,
+      "fall_start": 85,
+      "fall_end": 101,
+      "leak": 3
+    },
+    "Home_01_Home_01_Videos_video (4)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 240,
+      "ctx_start": 149,
+      "fall_start": 149,
+      "fall_end": 164,
+      "leak": 16
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (14)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 176,
+      "ctx_start": 38,
+      "fall_start": 52,
+      "fall_end": 76,
+      "leak": 2
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (1)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 157,
+      "ctx_start": 40,
+      "fall_start": 48,
+      "fall_end": 80,
+      "leak": 8
+    },
+    "Lecture_room_Lecture room_video (22)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 987,
+      "ctx_start": 602
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (13)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 244,
+      "ctx_start": 90,
+      "fall_start": 96,
+      "fall_end": 115,
+      "leak": 10
+    },
+    "Office_Office_video (13)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 792,
+      "ctx_start": 730
+    },
+    "Home_02_Home_02_Videos_video (53)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 216,
+      "ctx_start": 162
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (39)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 157,
+      "ctx_start": 36,
+      "fall_start": 49,
+      "fall_end": 75,
+      "leak": 3
+    },
+    "Home_01_Home_01_Videos_video (24)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 192,
+      "ctx_start": 125,
+      "fall_start": 131,
+      "fall_end": 142,
+      "leak": 10
+    },
+    "Lecture_room_Lecture room_video (27)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 259,
+      "ctx_start": 48
+    },
+    "Home_02_Home_02_Videos_video (58)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 336,
+      "ctx_start": 114
+    },
+    "Office_Office_video (23)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 1146,
+      "ctx_start": 708
+    },
+    "Office_Office_video (12)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 298,
+      "ctx_start": 168
+    },
+    "Home_01_Home_01_Videos_video (11)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 312,
+      "ctx_start": 133,
+      "fall_start": 137,
+      "fall_end": 170,
+      "leak": 12
+    },
+    "Home_01_Home_01_Videos_video (10)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 312,
+      "ctx_start": 123,
+      "fall_start": 135,
+      "fall_end": 150,
+      "leak": 4
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (8)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 258,
+      "ctx_start": 152,
+      "fall_start": 157,
+      "fall_end": 182,
+      "leak": 11
+    },
+    "Home_01_Home_01_Videos_video (9)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 336,
+      "ctx_start": 139,
+      "fall_start": 149,
+      "fall_end": 163,
+      "leak": 6
+    },
+    "Lecture_room_Lecture room_video (8)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 722,
+      "ctx_start": 71
+    },
+    "Office_Office_video (16)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 428,
+      "ctx_start": 57
+    },
+    "Home_02_Home_02_Videos_video (43)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 168,
+      "ctx_start": 86
+    },
+    "Home_01_Home_01_Videos_video (8)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 285,
+      "ctx_start": 109,
+      "fall_start": 125,
+      "fall_end": 139,
+      "leak": 0
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (27)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 253,
+      "ctx_start": 163,
+      "fall_start": 163,
+      "fall_end": 196,
+      "leak": 16
+    },
+    "Home_01_Home_01_Videos_video (20)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 216,
+      "ctx_start": 142,
+      "fall_start": 147,
+      "fall_end": 158,
+      "leak": 11
+    },
+    "Lecture_room_Lecture room_video (17)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 506,
+      "ctx_start": 161
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (22)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 229,
+      "ctx_start": 124,
+      "fall_start": 125,
+      "fall_end": 140,
+      "leak": 15
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (40)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 350,
+      "ctx_start": 247,
+      "fall_start": 259,
+      "fall_end": 292,
+      "leak": 4
+    },
+    "Lecture_room_Lecture room_video (13)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 415,
+      "ctx_start": 48
+    },
+    "Home_01_Home_01_Videos_video (2)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 240,
+      "ctx_start": 116,
+      "fall_start": 120,
+      "fall_end": 137,
+      "leak": 12
+    },
+    "Home_01_Home_01_Videos_video (22)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 240,
+      "ctx_start": 140,
+      "fall_start": 151,
+      "fall_end": 160,
+      "leak": 5
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (32)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 305,
+      "ctx_start": 190,
+      "fall_start": 206,
+      "fall_end": 229,
+      "leak": 0
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (33)": {
+      "split": "test",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 227,
+      "ctx_start": 73,
+      "fall_start": 87,
+      "fall_end": 116,
+      "leak": 2
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (42)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 159,
+      "ctx_start": 98,
+      "fall_start": 111,
+      "fall_end": 131,
+      "leak": 3
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (56)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 431,
+      "ctx_start": 293,
+      "fall_start": 301,
+      "fall_end": 328,
+      "leak": 8
+    },
+    "Home_02_Home_02_Videos_video (57)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 240,
+      "ctx_start": 25
+    },
+    "Home_02_Home_02_Videos_video (36)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_02",
+      "n_frames": 192,
+      "ctx_start": 123,
+      "fall_start": 124,
+      "fall_end": 139,
+      "leak": 15
+    },
+    "Home_01_Home_01_Videos_video (17)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 240,
+      "ctx_start": 152,
+      "fall_start": 154,
+      "fall_end": 169,
+      "leak": 14
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (23)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 311,
+      "ctx_start": 198,
+      "fall_start": 209,
+      "fall_end": 244,
+      "leak": 5
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (47)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 729,
+      "ctx_start": 618,
+      "fall_start": 625,
+      "fall_end": 658,
+      "leak": 9
+    },
+    "Home_01_Home_01_Videos_video (12)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 216,
+      "ctx_start": 156,
+      "fall_start": 161,
+      "fall_end": 173,
+      "leak": 11
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (46)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 292,
+      "ctx_start": 150,
+      "fall_start": 165,
+      "fall_end": 187,
+      "leak": 1
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (44)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 133,
+      "ctx_start": 41,
+      "fall_start": 54,
+      "fall_end": 86,
+      "leak": 3
+    },
+    "Lecture_room_Lecture room_video (18)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 1052,
+      "ctx_start": 977
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (67)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Coffee_room_02",
+      "n_frames": 347,
+      "ctx_start": 14
+    },
+    "Lecture_room_Lecture room_video (11)": {
+      "split": "test",
+      "is_fall": false,
+      "scene": "Lecture_room",
+      "n_frames": 363,
+      "ctx_start": 296
+    },
+    "Home_01_Home_01_Videos_video (14)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Home_01",
+      "n_frames": 288,
+      "ctx_start": 185,
+      "fall_start": 186,
+      "fall_end": 199,
+      "leak": 15
+    },
+    "Coffee_room_02_Coffee_room_02_Videos_video (57)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_02",
+      "n_frames": 563,
+      "ctx_start": 439,
+      "fall_start": 447,
+      "fall_end": 492,
+      "leak": 8
+    },
+    "Home_02_Home_02_Videos_video (41)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 240,
+      "ctx_start": 177
+    },
+    "Coffee_room_01_Coffee_room_01_Videos_video (24)": {
+      "split": "train",
+      "is_fall": true,
+      "scene": "Coffee_room_01",
+      "n_frames": 267,
+      "ctx_start": 194,
+      "fall_start": 209,
+      "fall_end": 235,
+      "leak": 1
+    },
+    "Home_02_Home_02_Videos_video (46)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Home_02",
+      "n_frames": 264,
+      "ctx_start": 198
+    },
+    "Office_Office_video (29)": {
+      "split": "train",
+      "is_fall": false,
+      "scene": "Office",
+      "n_frames": 1221,
+      "ctx_start": 964
+    }
+  }
+}

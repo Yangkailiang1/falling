@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+*.egg
+
+# Checkpoints / weights
+checkpoints/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# HuggingFace cache
+~/.cache/huggingface/
+
+# Submodule dirs that are huge (cloned repos)
+01-fall-mamba/
+02-pricai-multimodal-attention/
+03-ds-evidence-theory-fusion/
+04-egofalls/
+05-v-jepa2/
+06-leworldmodel/
+07-thinkjepa/
+08-sonata/
+09-bimp-dataset/
+10-fallvision/
+11-up-fall/
+12-perception-models/
+13-videoprism/*
+
+# Large datasets
+Le2i/
+
+# Environment
+.venv/
+venv/
+env/
