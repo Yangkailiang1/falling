@@ -122,6 +122,7 @@ def main():
 
     # Model
     model = create_skeleton_jepa(
+        num_keypoints=25,
         d_model=args.d_model,
         n_head=args.n_head,
         n_layers=args.n_layers,

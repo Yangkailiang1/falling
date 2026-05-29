@@ -34,7 +34,7 @@ class SkeletonEncoder(nn.Module):
     def __init__(
         self,
         num_keypoints: int = 17,
-        input_dim: int = 3,          # (x, y, confidence)
+        input_dim: int = 3,          # (x, y, confidence) or (x, y, z)
         d_model: int = 256,
         n_head: int = 8,
         n_layers: int = 4,
@@ -45,8 +45,9 @@ class SkeletonEncoder(nn.Module):
         super().__init__()
         self.num_keypoints = num_keypoints
         self.d_model = d_model
+        self.input_dim = input_dim
 
-        in_features = num_keypoints * input_dim  # 17 * 3 = 51
+        in_features = num_keypoints * input_dim
         self.input_proj = nn.Sequential(
             nn.Linear(in_features, d_model),
             nn.LayerNorm(d_model),
@@ -145,6 +146,7 @@ class SkeletonJEPA(nn.Module):
 
         self.context_encoder = SkeletonEncoder(
             num_keypoints=num_keypoints,
+            input_dim=3,
             d_model=d_model,
             n_head=n_head,
             n_layers=n_layers,
@@ -153,6 +155,7 @@ class SkeletonJEPA(nn.Module):
         )
         self.target_encoder = SkeletonEncoder(
             num_keypoints=num_keypoints,
+            input_dim=3,
             d_model=d_model,
             n_head=n_head,
             n_layers=n_layers,
@@ -281,6 +284,7 @@ class SkeletonClassifier(nn.Module):
 
 
 def create_skeleton_jepa(
+    num_keypoints: int = 17,
     d_model: int = 256,
     n_head: int = 8,
     n_layers: int = 4,
@@ -289,7 +293,7 @@ def create_skeleton_jepa(
 ) -> SkeletonJEPA:
     """Factory: create SkeletonJEPA with default configuration."""
     return SkeletonJEPA(
-        num_keypoints=17,
+        num_keypoints=num_keypoints,
         d_model=d_model,
         n_head=n_head,
         n_layers=n_layers,
