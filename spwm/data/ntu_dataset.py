@@ -1,47 +1,35 @@
 """
 NTU RGB+D 120 Skeleton Dataset for JEPA Pretraining.
 
-Format: ASCII .skeleton files, 25 joints × 3D coordinates (x, y, z).
+Format: ASCII .skeleton files, 25 joints x 3D coordinates (x, y, z).
 114,480 sequences from 106 subjects, 120 action classes, 3 camera views.
 
-File structure:
-  NTU120_skeleton/nturgbd_skeletons/
-    nturgb+d_skeletons/  (S001-S017, NTU60, 56,880 files)
-    S018*.skeleton ...   (S018-S032, NTU120 extension, 57,600 files)
-
 Parsing:
-  Line 0: frame_count
+  Line 0: frame_count (int)
   Per frame:
-    body_count (1 or 0)
-    tracking_metadata (10 ints)
-    joint_count (25)
-    25 lines of: x y z depthX depthY colorX colorY orientW orientX orientY orientZ state
-  If body_count=0: joint_count=0, no joint lines follow (skip 3 lines total)
+    num_bodies (int, 1 or 2)
+    For each body:
+      1 line: tracking_metadata (10 space-separated values)
+      1 line: joint_count (always 25)
+      25 lines: x y z depthX depthY colorX colorY orientW orientX orientY orientZ state
+
+We take only the FIRST body's (x,y,z) per frame.
 """
 
 import os
 import random
 import numpy as np
 import torch
-from torch.utils.data import Dataset, DataLoader, IterableDataset
+from torch.utils.data import Dataset, DataLoader
 from pathlib import Path
-from typing import Optional, List, Tuple, Iterator
+from typing import Optional, List, Tuple
 
 
 class NTUSkeletonDataset(Dataset):
     """NTU120 skeleton dataset for JEPA self-supervised pretraining.
 
-    Sliding window through each sequence: context (T_ctx frames) → gap → target (T_tgt frames).
+    Sliding window through each sequence: context (T_ctx frames) -> gap -> target (T_tgt frames).
     Returns normalized 3D keypoints: (T, 25, 3).
-
-    Args:
-        data_root: path to NTU120_skeleton/nturgbd_skeletons/
-        num_context_frames: context window size (default 16)
-        num_target_frames: target window size (default 16)
-        gap_frames: gap between context and target (default 8)
-        normalize: center at spine midpoint, scale by shoulder-hip distance
-        max_files: limit number of files for quick testing
-        seed: random seed for shuffling
     """
 
     def __init__(
@@ -49,7 +37,7 @@ class NTUSkeletonDataset(Dataset):
         data_root: str = "NTU120_skeleton/nturgbd_skeletons",
         num_context_frames: int = 16,
         num_target_frames: int = 16,
-        gap_frames: int = 8,
+        gap_frames: int = 16,
         normalize: bool = True,
         max_files: Optional[int] = None,
         min_frames: int = 48,
@@ -63,21 +51,17 @@ class NTUSkeletonDataset(Dataset):
         self.normalize = normalize
         self.window_size = num_context_frames + gap_frames + num_target_frames
 
-        # Collect .skeleton files
         self.files = self._collect_files()
         if max_files is not None:
             random.Random(seed).shuffle(self.files)
             self.files = self.files[:max_files]
 
-        # Pre-compute frame counts for filtering
         self.files = [f for f in self.files if self._get_frame_count(f) >= min_frames]
-
-        # Pre-compute windows
         self._windows = self._build_windows()
 
     def _collect_files(self) -> List[Path]:
         files = []
-        for root, dirs, filenames in os.walk(self.data_root):
+        for root, _dirs, filenames in os.walk(self.data_root):
             for fn in filenames:
                 if fn.endswith(".skeleton"):
                     files.append(Path(root) / fn)
@@ -102,9 +86,10 @@ class NTUSkeletonDataset(Dataset):
     def _parse_skeleton(self, path: Path, start: int, length: int) -> np.ndarray:
         """Parse a window of skeleton data.
 
-        NTU has two bodyCount formats:
-          Standard: "1" on its own line, tracking metadata on next line
-          Merged:   "ID 0/1 flags... floats" all on one line (bodyCount at index 1)
+        NTU format:
+          Line 0: frame_count
+          Per frame: num_bodies, then per body: tracking(10vals) + joint_count + 25 joints
+        We take only the first body's (x,y,z) per frame.
         """
         with open(path, "r") as f:
             lines = f.readlines()
@@ -115,60 +100,61 @@ class NTUSkeletonDataset(Dataset):
 
         line_idx = 1
         for frame_num in range(fc):
-            # Handle both bodyCount formats
-            body_line = lines[line_idx].strip()
-            if " " in body_line:
-                # Merged format: "id bodyCount flags... float float int"
-                parts = body_line.split()
-                body_count = int(parts[1])
-                line_idx += 1  # consumed body+tracking line
-                n_joints = int(lines[line_idx].strip()); line_idx += 1
-            else:
-                # Standard format
-                body_count = int(body_line); line_idx += 1
-                _tracking = lines[line_idx]; line_idx += 1  # skip tracking
+            num_bodies = int(lines[line_idx].strip()); line_idx += 1
+
+            frame_joints = None
+            for body_idx in range(num_bodies):
+                tracking = lines[line_idx].strip(); line_idx += 1  # skip
                 n_joints = int(lines[line_idx].strip()); line_idx += 1
 
-            if frame_num < start or frame_num >= end:
-                line_idx += n_joints  # skip joint lines
-                continue
+                if frame_num < start or frame_num >= end:
+                    line_idx += n_joints  # skip joints
+                    continue
 
-            joints = []
-            for _ in range(n_joints):
-                parts = lines[line_idx].strip().split(); line_idx += 1
-                x, y, z = float(parts[0]), float(parts[1]), float(parts[2])
-                joints.append([x, y, z])
-            data.append(joints)
+                if body_idx == 0:
+                    joints = []
+                    for _ in range(n_joints):
+                        parts = lines[line_idx].strip().split(); line_idx += 1
+                        x, y, z = float(parts[0]), float(parts[1]), float(parts[2])
+                        joints.append([x, y, z])
+                    frame_joints = joints
+                else:
+                    line_idx += n_joints  # skip extra bodies
 
-        arr = np.array(data, dtype=np.float32)  # (actual_T, 25, 3)
-        actual_len = arr.shape[0]
-        if actual_len < length:
-            pad = length - actual_len
-            arr = np.pad(arr, ((0, pad), (0, 0), (0, 0)), mode="edge")
+            if frame_joints is not None:
+                data.append(frame_joints)
+
+        if len(data) == 0:
+            arr = np.zeros((length, 25, 3), dtype=np.float32)
+        else:
+            arr = np.array(data, dtype=np.float32)
+            actual_len = arr.shape[0]
+            if actual_len < length:
+                pad = length - actual_len
+                arr = np.pad(arr, ((0, pad), (0, 0), (0, 0)), mode="edge")
 
         if self.normalize:
             arr = self._normalize(arr)
         return arr
 
     def _normalize(self, kp: np.ndarray) -> np.ndarray:
-        """Normalize: center at spine midpoint, scale by shoulder-hip distance."""
-        # NTU joint indices: 0=base_spine, 1=mid_spine, 4=left_shoulder, 8=right_shoulder,
-        # 12=left_hip, 16=right_hip, 20=spine_shoulder
-        # Spine midpoint: mid_spine (index 1) — use as center
-        # Scale: shoulder midpoint to hip midpoint distance
+        """Normalize: center at spine midpoint, scale by shoulder-hip distance.
 
+        NTU joint indices:
+          0=base_spine, 1=mid_spine, 4=left_shoulder, 8=right_shoulder,
+          12=left_hip, 16=right_hip
+        """
         spine = kp[:, 1, :]  # mid_spine
-        shoulder_mid = (kp[:, 4, :] + kp[:, 8, :]) / 2  # L+R shoulder
-        hip_mid = (kp[:, 12, :] + kp[:, 16, :]) / 2     # L+R hip
+        shoulder_mid = (kp[:, 4, :] + kp[:, 8, :]) / 2
+        hip_mid = (kp[:, 12, :] + kp[:, 16, :]) / 2
 
         torso_dist = np.linalg.norm(shoulder_mid - hip_mid, axis=-1)
         torso_dist = torso_dist[torso_dist > 0.01]
         scale = np.median(torso_dist) if len(torso_dist) > 0 else 1.0
         scale = max(scale, 1e-6)
 
-        kp_norm = kp - spine[:, None, :]  # center at mid-spine
+        kp_norm = kp - spine[:, None, :]
         kp_norm = kp_norm / scale
-
         return kp_norm.astype(np.float32)
 
     def __getitem__(self, idx: int):
@@ -189,7 +175,7 @@ def create_ntu_jepa_loaders(
     data_root: str = "NTU120_skeleton/nturgbd_skeletons",
     num_context_frames: int = 16,
     num_target_frames: int = 16,
-    gap_frames: int = 8,
+    gap_frames: int = 16,
     batch_size: int = 128,
     num_workers: int = 4,
     val_split: float = 0.02,
