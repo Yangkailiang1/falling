@@ -50,7 +50,12 @@ See `spwm/downloads.py` for download instructions.
 | `research/` | ~30M | Surveyed papers | — |
 
 **Upcoming: NTU RGB+D 120 skeleton data for large-scale JEPA pretraining** (~114K samples, 25 3D joints).
-Download link (ModelScope): TBD
+
+- Source: [ModelScope](https://www.modelscope.cn/datasets/yangkailiang12/NTU120_skeleton) (`git clone` with LFS)
+- Status: Downloaded 2026-05-29, extracted to `NTU120_skeleton/` (35G on disk, gitignored)
+- 89,314 sequences after filtering (min 48 frames), producing 421K JEPA context-target windows
+- Training: `spwm/ntu_jepa_pretrain.py` — 3.84M params, ~1600 batches/epoch @ batch_size=256
+- After pretraining: transfer encoder to Le2i classifier via `spwm/skeleton_jepa_train.py --phase classify --resume_jepa checkpoints/ntu_jepa_best.pt`
 
 ## JEPA Classifier (Video + Audio) — F1=1.000
 
