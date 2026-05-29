@@ -100,7 +100,12 @@ class NTUSkeletonDataset(Dataset):
         return len(self._windows)
 
     def _parse_skeleton(self, path: Path, start: int, length: int) -> np.ndarray:
-        """Parse a window of skeleton data."""
+        """Parse a window of skeleton data.
+
+        NTU has two bodyCount formats:
+          Standard: "1" on its own line, tracking metadata on next line
+          Merged:   "ID 0/1 flags... floats" all on one line (bodyCount at index 1)
+        """
         with open(path, "r") as f:
             lines = f.readlines()
 
@@ -110,9 +115,19 @@ class NTUSkeletonDataset(Dataset):
 
         line_idx = 1
         for frame_num in range(fc):
-            body_count = int(lines[line_idx].strip()); line_idx += 1
-            tracking = lines[line_idx]; line_idx += 1  # skip
-            n_joints = int(lines[line_idx].strip()); line_idx += 1
+            # Handle both bodyCount formats
+            body_line = lines[line_idx].strip()
+            if " " in body_line:
+                # Merged format: "id bodyCount flags... float float int"
+                parts = body_line.split()
+                body_count = int(parts[1])
+                line_idx += 1  # consumed body+tracking line
+                n_joints = int(lines[line_idx].strip()); line_idx += 1
+            else:
+                # Standard format
+                body_count = int(body_line); line_idx += 1
+                _tracking = lines[line_idx]; line_idx += 1  # skip tracking
+                n_joints = int(lines[line_idx].strip()); line_idx += 1
 
             if frame_num < start or frame_num >= end:
                 line_idx += n_joints  # skip joint lines
