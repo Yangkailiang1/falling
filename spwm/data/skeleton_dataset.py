@@ -48,6 +48,7 @@ class SkeletonDataset(Dataset):
         neg_stride: int = 16,
         normalize: bool = True,
         augment: bool = False,
+        num_keypoints: int = 17,
         seed: int = 42,
         jepa_normal_only: bool = True,
     ):
@@ -62,6 +63,7 @@ class SkeletonDataset(Dataset):
         self.neg_stride = neg_stride
         self.normalize = normalize
         self.augment = augment
+        self.num_keypoints = num_keypoints
         self.jepa_normal_only = jepa_normal_only
 
         # Load split
@@ -77,12 +79,17 @@ class SkeletonDataset(Dataset):
         self._rng = np.random.RandomState(seed)
 
     def _split_name_to_kp_name(self, vname: str) -> Optional[str]:
-        """Map split video name to keypoint file basename."""
+        """Map split video name to keypoint file basename.
+
+        17kp (le2i_keypoints): Coffee_room_01_video_10
+        25kp (le2i_keypoints_25): Coffee_room_01_Coffee_room_01_Videos_video_10
+        """
         for scene in self._kp_scenes:
             if vname.startswith(scene):
                 m = re.search(r"\((\d+)\)", vname)
                 if m:
-                    return f"{scene}_video_{m.group(1)}"
+                    # 25kp uses full vname with spaces/parens replaced
+                    return vname.replace(" ", "_").replace("(", "").replace(")", "")
         return None
 
     def _find_kp_file(self, kp_name: str) -> Optional[Tuple[Path, str]]:
@@ -208,52 +215,55 @@ class SkeletonDataset(Dataset):
     def _normalize_keypoints(self, kp: np.ndarray, conf: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         """Normalize keypoints: center at hip midpoint, scale by shoulder-hip distance.
 
-        Uses COCO keypoint indices:
-          5=left shoulder, 6=right shoulder, 11=left hip, 12=right hip
-
-        Returns normalized (x, y) and thresholded confidence.
+        Supports both COCO 17 (le2i_keypoints) and NTU 25 (le2i_keypoints_25) layouts.
         """
-        # Hip center = midpoint of left and right hips
-        hip_left = kp[:, 11, :]   # (T, 2)
-        hip_right = kp[:, 12, :]  # (T, 2)
+        if self.num_keypoints == 25:
+            # NTU 25-joint indices
+            l_shoulder, r_shoulder = 4, 8
+            l_hip, r_hip = 12, 16
+            spine_mid = 1
+        else:
+            # COCO 17-joint indices
+            l_shoulder, r_shoulder = 5, 6
+            l_hip, r_hip = 11, 12
+            spine_mid = None
 
-        # Handle zero/occluded keypoints by using available ones
+        # Hip center
+        hip_left = kp[:, l_hip, :]
+        hip_right = kp[:, r_hip, :]
         hip_center = np.zeros_like(hip_left)
         for t in range(len(kp)):
-            valid_hips = []
-            for idx in [11, 12]:
+            valid = []
+            for idx in [l_hip, r_hip]:
                 if conf[t, idx] > 0.3:
-                    valid_hips.append(kp[t, idx])
-            if len(valid_hips) >= 2:
-                hip_center[t] = (valid_hips[0] + valid_hips[1]) / 2
-            elif len(valid_hips) == 1:
-                hip_center[t] = valid_hips[0]
-            elif conf[t, 5] > 0.3 and conf[t, 6] > 0.3:
-                # Fallback to shoulder midpoint
-                hip_center[t] = (kp[t, 5] + kp[t, 6]) / 2
-            # else keep as zeros
+                    valid.append(kp[t, idx])
+            if len(valid) >= 2:
+                hip_center[t] = (valid[0] + valid[1]) / 2
+            elif len(valid) == 1:
+                hip_center[t] = valid[0]
+            elif spine_mid is not None and conf[t, spine_mid] > 0.3:
+                hip_center[t] = kp[t, spine_mid]
+            elif conf[t, l_shoulder] > 0.3 and conf[t, r_shoulder] > 0.3:
+                hip_center[t] = (kp[t, l_shoulder] + kp[t, r_shoulder]) / 2
 
         # Shoulder midpoint
         shoulder_center = np.zeros_like(hip_left)
         for t in range(len(kp)):
-            if conf[t, 5] > 0.3 and conf[t, 6] > 0.3:
-                shoulder_center[t] = (kp[t, 5] + kp[t, 6]) / 2
-            elif conf[t, 5] > 0.3:
-                shoulder_center[t] = kp[t, 5]
-            elif conf[t, 6] > 0.3:
-                shoulder_center[t] = kp[t, 6]
+            if conf[t, l_shoulder] > 0.3 and conf[t, r_shoulder] > 0.3:
+                shoulder_center[t] = (kp[t, l_shoulder] + kp[t, r_shoulder]) / 2
+            elif conf[t, l_shoulder] > 0.3:
+                shoulder_center[t] = kp[t, l_shoulder]
+            elif conf[t, r_shoulder] > 0.3:
+                shoulder_center[t] = kp[t, r_shoulder]
 
-        # Scale factor: mean shoulder-hip distance across frames
-        torso_dist = np.linalg.norm(shoulder_center - hip_center, axis=-1)  # (T,)
+        torso_dist = np.linalg.norm(shoulder_center - hip_center, axis=-1)
         torso_dist = torso_dist[torso_dist > 0.01]
         scale = np.median(torso_dist) if len(torso_dist) > 0 else 1.0
         scale = max(scale, 1e-6)
 
-        # Center at hip and scale
-        kp_norm = kp - hip_center[:, None, :]  # center at hips
+        kp_norm = kp - hip_center[:, None, :]
         kp_norm = kp_norm / scale
 
-        # Zero out low-confidence keypoints
         low_conf = conf < 0.1
         kp_norm[low_conf] = 0.0
 

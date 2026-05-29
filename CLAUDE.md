@@ -45,11 +45,13 @@ See `spwm/downloads.py` for download instructions.
 
 | Path | Size | Description | Source |
 |------|------|-------------|--------|
-| `le2i_keypoints/` | 8.3M | 127 clips, YOLOv8-pose extracted 17 COCO keypoints | Generated from Le2i/ via `spwm/data/skeleton_extractor.py` |
+| `le2i_keypoints/` | 8.3M | 127 clips, 17 COCO keypoints (YOLOv8-pose) | Generated via `spwm/data/skeleton_extractor.py` |
+| `le2i_keypoints_25/` | 13M | 130 clips, 25 NTU-aligned keypoints (MediaPipe) | Generated via `spwm/data/extract_le2i_25kp.py` |
 | `le2i_split.json` | 40K | Video-level train/test split (seed=42) | Generated via `spwm/data/prepare_le2i_split.py` |
 | `research/` | ~30M | Surveyed papers | — |
 
-**Upcoming: NTU RGB+D 120 skeleton data for large-scale JEPA pretraining** (~114K samples, 25 3D joints).
+**NTU RGB+D 120 skeleton data for large-scale JEPA pretraining**: downloaded to `NTU120_skeleton/` (gitignored, 35G).
+- 89,314 sequences → 421K JEPA windows. Training via `spwm/ntu_jepa_pretrain.py`.
 
 - Source: [ModelScope](https://www.modelscope.cn/datasets/yangkailiang12/NTU120_skeleton) (`git clone` with LFS)
 - Status: Downloaded 2026-05-29, extracted to `NTU120_skeleton/` (35G on disk, gitignored)
@@ -85,7 +87,7 @@ python3 -m spwm.classifier_train --data_root Le2i --epochs 30 --batch_size 8 \
 
 ## Skeleton-JEPA — F1=0.58, AUC=0.89
 
-Two-phase approach on 2D skeleton keypoints (17 COCO joints from `le2i_keypoints/`).
+Two-phase approach on 2D skeleton keypoints. Supports both 17 COCO (`le2i_keypoints/`) and 25 NTU-aligned (`le2i_keypoints_25/`, matching NTU120 format for transfer).
 
 ### Phase 1: JEPA Pretraining (self-supervised, normal activity only)
 
