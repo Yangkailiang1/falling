@@ -14,20 +14,12 @@ Multimodal fall detection for elderly people. Three approaches:
 
 ## Data Files (gitignored — NOT in repo)
 
-| Path | Size | Description |
-|------|------|-------------|
-| `Le2i/` | 17G | Raw AVI files (25fps, 320×240) with fall annotations |
-| `checkpoints/` | ~4G | Model checkpoints (classifier_best.pt 1.9G, skeleton checkpoints ~70M) |
-| `spwm/model_weights/` | 6.5G | Pretrained encoders: V-JEPA2 ViT-L, WavJEPA, CLIP, CLAP |
-| `logs/` | ~1.4M | Training logs |
-
-## Data Files (tracked in git)
-
-| Path | Size | Description |
-|------|------|-------------|
-| `le2i_keypoints/` | 8.3M | 127 clips: 52 fall + 75 normal. `(T,17,2)` keypoints + `(T,17)` conf |
-| `le2i_split.json` | 40K | Video-level scene-stratified 80/20 train/test split (seed=42) |
-| `research/` | ~30M | Surveyed papers (fall-mamba, v-jepa2, etc.) |
+| Path | Size | Description | Source |
+|------|------|-------------|--------|
+| `Le2i/` | 17G | Raw AVI files (25fps, 320×240) with fall annotations | [Kaggle](https://www.kaggle.com/datasets/tuyenldvn/falldataset-imvia) (`kagglehub.dataset_download("tuyenldvn/falldataset-imvia")`) |
+| `checkpoints/` | ~4G | Model checkpoints (classifier_best.pt 1.9G, skeleton checkpoints ~70M) | Local training |
+| `spwm/model_weights/` | 6.5G | Pretrained encoders: V-JEPA2 ViT-L, WavJEPA, CLIP, CLAP | See below |
+| `logs/` | ~1.4M | Training logs | — |
 
 ## Model Weights (`spwm/model_weights/` — ~6.5G total, gitignored)
 
@@ -39,6 +31,26 @@ Multimodal fall detection for elderly people. Three approaches:
 | CLAP HTSAT | `clap-htsat-unfused/` | 153.5M | mel spectrogram → `(B,512)` |
 
 All load from local paths — no online download needed at runtime.
+
+| Weight | Source |
+|--------|--------|
+| V-JEPA 2 ViT-L (vitl.pt) | [facebookresearch/vjepa2](https://github.com/facebookresearch/vjepa2) |
+| WavJEPA-Base | [facebookresearch/wavjepa](https://github.com/facebookresearch/wavjepa) |
+| CLIP ViT-B/16 | HuggingFace `openai/clip-vit-base-patch16` |
+| CLAP HTSAT | HuggingFace `laion/clap-htsat-unfused` |
+
+See `spwm/downloads.py` for download instructions.
+
+## Skeleton Data Sources
+
+| Path | Size | Description | Source |
+|------|------|-------------|--------|
+| `le2i_keypoints/` | 8.3M | 127 clips, YOLOv8-pose extracted 17 COCO keypoints | Generated from Le2i/ via `spwm/data/skeleton_extractor.py` |
+| `le2i_split.json` | 40K | Video-level train/test split (seed=42) | Generated via `spwm/data/prepare_le2i_split.py` |
+| `research/` | ~30M | Surveyed papers | — |
+
+**Upcoming: NTU RGB+D 120 skeleton data for large-scale JEPA pretraining** (~114K samples, 25 3D joints).
+Download link (ModelScope): TBD
 
 ## JEPA Classifier (Video + Audio) — F1=1.000
 
