@@ -127,6 +127,21 @@ Per-leak (test): leak=1 50%, leak=2 0%, all others 100%.
 
 Only 66 positive training samples from 127 videos. JEPA pretrained on 1133 windows from 27 non-fall videos — far too little to learn generalizable human motion representations. **Plan: pretrain on NTU RGB+D 120 (114K skeleton samples).**
 
+### NTU120 JEPA Pretraining (2026-05-29, Running)
+
+**Status**: Training on GPU 0, batch_size=64, 6444 batches/epoch, ~410s/epoch.
+**Progress**: Epoch 5/200, V-loss=0.083 (already better than Le2i-only best 0.094).
+**Log**: `logs/ntu_jepa_20260529_174808.log`
+**Checkpoint**: `checkpoints/ntu_jepa_best.pt`
+
+After pretraining, transfer to Le2i 25-joint classifier:
+```bash
+python3 -m spwm.skeleton_jepa_train --phase classify \
+  --resume_jepa checkpoints/ntu_jepa_best.pt \
+  --data_root le2i_keypoints_25 --num_keypoints 25 \
+  --cls_epochs 200 --device cuda
+```
+
 ### Training
 
 ```bash
@@ -134,7 +149,7 @@ Only 66 positive training samples from 127 videos. JEPA pretrained on 1133 windo
 python3 -m spwm.skeleton_jepa_train --phase both --overfit_test \
   --jepa_epochs 100 --cls_epochs 100 --device cpu
 
-# Full training (GPU)
+# Full training on Le2i 17kp (GPU)
 python3 -m spwm.skeleton_jepa_train --phase both \
   --jepa_epochs 200 --cls_epochs 200 \
   --gap_frames 16 --future_frames 32 \
