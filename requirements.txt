@@ -1,0 +1,9 @@
+torch>=2.0.0
+torchvision
+numpy
+scikit-learn
+tqdm
+av>=13.0.0
+einops
+timm
+transformers
